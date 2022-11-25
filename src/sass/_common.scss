@@ -54,3 +54,11 @@ box-shadow: 0 15px 10px 0 rgba(0,0,0,0.2);
   background-size: 25px;
   background-position: 50% 50%;
 }
+.is-hidden{
+  display: none;
+}
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  gap:20px;
+}
