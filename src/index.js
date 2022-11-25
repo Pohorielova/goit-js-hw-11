@@ -1,5 +1,5 @@
 import './sass/index.scss';
-import { fetchPictures } from './js/picApiService';
+import { fetchPictures } from './js/picApiService.js';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
@@ -25,7 +25,7 @@ function onSearch (evt){
 
   fetchPictures(query).then(({data}) => {
        console.log(data);
-           renderMarkup(data.hits);
+           renderMarkup(data);
            simpleLightBox = new SimpleLightbox('.gallery a').refresh();
            Notify.success(`Hooray! We found ${data.totalHits} images.`);
          })
