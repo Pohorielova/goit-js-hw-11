@@ -1,1 +1,56 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+.search-form {
+background: linear-gradient(90deg,
+rgba(230,80,184,0.9151712887438825) 0%,
+rgba(253,213,29,1) 50%,
+rgba(184,252,69,0.7373572593800979) 100%);
+padding:20px 0px 20px 0px;
+display: flex;
+justify-content: center;
+}
+.search-form input{
+  box-shadow: 0 15px 10px 0 rgba(0,0,0,0.2);
+  padding:5px ;
+  border: none;
+  border-bottom: 5px solid  deeppink;
+&:focus{
+  outline:none;
+
+  border-bottom: 5px solid rgb(125, 206, 54);
+}
+}
+
+button{
+
+border: none;
+background-color: deeppink;
+// width: 40px;
+color: rgb(253, 251, 251);
+box-shadow: 0 15px 10px 0 rgba(0,0,0,0.2);
+&:focus,
+&:hover{
+  outline:none;
+  background-color: rgb(125, 206, 54) ;
+  }
+  &:active{ background-color: rgb(37, 153, 60) ;}
+  &:disabled{ background-color: rgba(255, 20, 145, 0.521);}
+
+}
+
+.load-more{
+  width: 140px;
+  min-height: 34px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.search-form button{
+  width: 40px;
+  background-image: url('../images/search.svg');
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: 50% 50%;
+}
