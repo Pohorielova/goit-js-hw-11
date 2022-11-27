@@ -42,13 +42,13 @@ constructor(){
 
 fetchPictures(){
 
-  return fetch(`https://pixabay.com/api/?key=31598593-79bd95191575728407a30b47c&q=${this.searchQuery}&orientation=horizontal&safesearch=true&image_type=photo&page=${this.page}&per_page=5`)
+  return fetch(`https://pixabay.com/api/?key=31598593-79bd95191575728407a30b47c&q=${this.searchQuery}&orientation=horizontal&safesearch=true&image_type=photo&page=${this.page}&per_page=12`)
   .then( r=> r.json())
   .then(data=>{
-
     this.page+=1;
-
     return data.hits;
+
+
   })
 }
 

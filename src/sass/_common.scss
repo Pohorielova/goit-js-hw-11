@@ -1,4 +1,7 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+body{
+  background-color: rgba(211, 209, 210, 0.542);
+}
 
 .search-form {
 background: linear-gradient(90deg,
@@ -44,6 +47,7 @@ box-shadow: 0 15px 10px 0 rgba(0,0,0,0.2);
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 25px;
   margin-top: 10px;
 }
 
@@ -60,5 +64,42 @@ box-shadow: 0 15px 10px 0 rgba(0,0,0,0.2);
 .gallery{
   display: flex;
   flex-wrap: wrap;
-  gap:20px;
+  justify-content: center;
+  gap:30px;
+  text-decoration: none;
+  padding: 15px;
+
 }
+.gallery__item{
+  text-decoration: none;
+  max-height: 270px;
+  color: black;
+  box-shadow: 0 15px 10px 0 rgba(0,0,0,0.2);
+
+}
+.info-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+.info{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  padding:0px 10px 0px 10px;
+
+
+}
+
+img{
+  display:block;
+  outline-offset: -10px;
+  outline: 1px solid white;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+
+
+}
+// .photo-card{border-top-right-radius: 4px;}

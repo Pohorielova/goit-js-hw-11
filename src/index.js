@@ -59,21 +59,40 @@ const loadMoreBtn = document.querySelector('.load-more');
 searchForm.addEventListener('submit', onSearch);
 // ----------вариант 2, пробуем
 loadMoreBtn.addEventListener('click', onloadMore);
+loadMoreBtn.classList.add('is-hidden');
+
 const picApiService = new PicApiService();
-// let searchQuery ='';
-
-
-
-
   function onSearch(e){
     e.preventDefault();
-    picApiService.query = e.currentTarget.elements.searchQuery.value;
+    galleryBox.innerHTML='';
+    picApiService.query = e.currentTarget.elements.searchQuery.value.trim();
     picApiService.resetPage();
-    picApiService.fetchPictures().then(createMarkup);
+    if (!picApiService.query){
+          Notify.failure('The search string cannot be empty. Please specify your search query.');
+          return;
+        }
+    loadMoreBtn.classList.remove('is-hidden');
+
+    picApiService.fetchPictures().then( hits =>{
+      createMarkup(hits);
+      simpleLightBox = new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
+        captionPosition: 'bottom',
+        captionDelay: 250,
+      }).refresh();
+      Notify.success(`Hooray! We found ${totalHits} images.`);
+    }).catch(error => console.log(error))
+         .finally(() => {
+          searchForm.reset();
+          
+        });
   };
 
   function onloadMore(e){
-    picApiService.fetchPictures().then(createMarkup);
+    picApiService.fetchPictures().then(hits=>{
+      createMarkup(hits);
+      simpleLightBox = new SimpleLightbox('.gallery a').refresh();
+    });
   };
 
 //
@@ -83,7 +102,7 @@ function createMarkup(hits) {
   const markup = hits.map(({ largeImageURL, webformatURL, tags, likes, views, comments, downloads })=>{
     return `<a class="gallery__item" href="${largeImageURL}">
       <div class="photo-card">
-       <img src="${webformatURL}" alt="${tags}" width = "400" loading="lazy" />
+       <img src="${webformatURL}" alt="${tags}" width = "300" height="200" loading="lazy" />
          <div class="info">
          <p class="info-item"><b>Likes</b>${likes}</p>
          <p class="info-item"><b>Views</b>${views}</p>
